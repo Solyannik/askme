@@ -7,6 +7,8 @@ class User < ApplicationRecord
   USERNAME = /\A[a-zA-Z\d\_]+\z/
 
   has_many :questions
+  before_validation :username_downcase
+
   validates :email, presence: true,
                     uniqueness: true,
                     format: { with: MAIL }
@@ -26,6 +28,10 @@ class User < ApplicationRecord
         OpenSSL::PKCS5.pbkdf2_hmac(self.password, self.password_salt, ITERATIONS, DIGEST.length, DIGEST)
       )
     end
+  end
+
+  def username_downcase
+    self.username.downcase!
   end
 
   def self.hash_to_string(password_hash)
