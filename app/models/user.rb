@@ -3,20 +3,20 @@ require 'openssl'
 class User < ApplicationRecord
   ITERATIONS = 20000
   DIGEST = OpenSSL::Digest::SHA256.new
+  MAIL = /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
+  USERNAME = /\A[a-zA-Z\d\_]+\z/
 
   has_many :questions
+  validates :email, presence: true,
+                    uniqueness: true,
+                    format: { with: MAIL }
+  validates :username, presence: true,
+            uniqueness: true,
+            length: { maximum: 40 },
+            format: { with: USERNAME }
+  validates :password, presence: true, on: :create
 
-  validates :email, :username, presence: true
-  validates :email, :username, uniqueness: true
-
-  attr_accessor :password, :email, :username
-
-  validates_presence_of :password, on: :create
-  validates_confirmation_of :password
-  validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create }
-  validates :username, length: { maximum: 40 }
-  validates :username, format: { with: /\A[a-zA-Z0-9\_]+\z/, on: :create }
-
+  attr_accessor :password
   before_save :encrypt_password
 
   def encrypt_password
