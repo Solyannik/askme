@@ -21,7 +21,7 @@ class User < ApplicationRecord
             length: { maximum: 40 },
             format: { with: USERNAME }
   validates :password, presence: true, on: :create
-  validates :password
+  validates_confirmation_of :password
 
   def self.hash_to_string(password_hash)
     password_hash.unpack('H*')[0]
@@ -37,7 +37,7 @@ class User < ApplicationRecord
   end
 
   private
-  
+
   def encrypt_password
     if self.password.present?
       self.password_salt = User.hash_to_string(OpenSSL::Random.random_bytes(16))
