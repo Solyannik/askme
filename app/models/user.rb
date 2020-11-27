@@ -21,7 +21,7 @@ class User < ApplicationRecord
             length: { maximum: 40 },
             format: { with: VALID_USERNAME_REGEXP }
   validates :password, presence: true, on: :create
-  validates :password
+  validates_confirmation_of :password
 
   def self.hash_to_string(password_hash)
     password_hash.unpack('H*')[0]
