@@ -34,6 +34,7 @@ class User < ApplicationRecord
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   validates_confirmation_of :password
 =======
   validates :password
@@ -44,6 +45,9 @@ class User < ApplicationRecord
 =======
   validates :password
 >>>>>>> ae31001... Rename constants
+=======
+  validates_confirmation_of :password
+>>>>>>> d7833ea... version 2
 
   def self.hash_to_string(password_hash)
     password_hash.unpack('H*')[0]
