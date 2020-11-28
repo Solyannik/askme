@@ -27,10 +27,14 @@ class User < ApplicationRecord
             format: { with: VALID_USERNAME_REGEXP }
   validates :password, presence: true, on: :create
 <<<<<<< HEAD
+<<<<<<< HEAD
   validates_confirmation_of :password
 =======
   validates :password
 >>>>>>> 672dc05... version 2
+=======
+  validates_confirmation_of :password
+>>>>>>> f966f47... Add styles CSS
 
   def self.hash_to_string(password_hash)
     password_hash.unpack('H*')[0]
@@ -51,7 +55,7 @@ class User < ApplicationRecord
 >>>>>>> 672dc05... version 2
 
   private
-  
+
   def encrypt_password
     if self.password.present?
       self.password_salt = User.hash_to_string(OpenSSL::Random.random_bytes(16))
