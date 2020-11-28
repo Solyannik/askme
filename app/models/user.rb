@@ -3,18 +3,8 @@ require 'openssl'
 class User < ApplicationRecord
   ITERATIONS = 20000
   DIGEST = OpenSSL::Digest::SHA256.new
-<<<<<<< HEAD
-<<<<<<< HEAD
   VALID_MAIL_REGEXP = URI::MailTo::EMAIL_REGEXP
   VALID_USERNAME_REGEXP = /\A\w+\z/
-=======
-  MAIL = /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
-  USERNAME = /\A[\w]+\z/
->>>>>>> 672dc05... version 2
-=======
-  VALID_MAIL_REGEXP = URI::MailTo::EMAIL_REGEXP
-  VALID_USERNAME_REGEXP = /\A\w+\z/
->>>>>>> ae31001... Rename constants
 
   has_many :questions
   before_validation :username_downcase
@@ -31,23 +21,7 @@ class User < ApplicationRecord
             length: { maximum: 40 },
             format: { with: VALID_USERNAME_REGEXP }
   validates :password, presence: true, on: :create
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-  validates_confirmation_of :password
-=======
   validates :password
->>>>>>> 672dc05... version 2
-=======
-  validates_confirmation_of :password
->>>>>>> f966f47... Add styles CSS
-=======
-  validates :password
->>>>>>> ae31001... Rename constants
-=======
-  validates_confirmation_of :password
->>>>>>> d7833ea... version 2
 
   def self.hash_to_string(password_hash)
     password_hash.unpack('H*')[0]
@@ -61,11 +35,6 @@ class User < ApplicationRecord
       nil
     end
   end
-<<<<<<< HEAD
-
-  private
-=======
->>>>>>> 672dc05... version 2
 
   private
 
