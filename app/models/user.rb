@@ -6,12 +6,11 @@ class User < ApplicationRecord
   VALID_MAIL_REGEXP = URI::MailTo::EMAIL_REGEXP
   VALID_USERNAME_REGEXP = /\A\w+\z/
 
-  has_many :questions
-  before_validation :username_downcase
-  before_validation :email_downcase
-  before_save :encrypt_password
-
   attr_accessor :password
+  
+  has_many :questions
+  before_validation :username_downcase, :email_downcase
+  before_save :encrypt_password
 
   validates :email, presence: true,
                     uniqueness: true,
@@ -29,6 +28,7 @@ class User < ApplicationRecord
 
   def self.authenticate(email, password)
     user = find_by(email: email)
+    return nil unless user.present?
     if user.present? && user.password_hash == User.hash_to_string(OpenSSL::PKCS5.pbkdf2_hmac(password, user.password_salt, ITERATIONS, DIGEST.length, DIGEST))
       user
     else
@@ -48,14 +48,10 @@ class User < ApplicationRecord
   end
 
   def username_downcase
-    if self.username.present?
-      username.downcase!
-    end
+    self.username&.downcase!
   end
 
   def email_downcase
-    if self.email.present?
-      email.downcase!
-    end
+    self.email&.downcase!
   end
 end
