@@ -8,13 +8,13 @@ module ApplicationHelper
   end
 
   def inclination(number, one, few, many)
-    return "" if number.nil? || number == 0
+    return "0 #{many}" if (number.nil? || number == 0)
     remainder_100 = number % 100
     return many if remainder_100.between?(11, 14)
     remainder = number % 10
-    return one if remainder == 1
-    return few if remainder.between?(2, 4)
-    return many
+    return "#{number} #{one}" if remainder == 1
+    return "#{number} #{few}" if remainder.between?(2, 4)
+    "#{number} #{many}"
   end
 
   def fa_icon(icon_class)
