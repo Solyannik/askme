@@ -7,13 +7,14 @@ module ApplicationHelper
     end
   end
 
-  def inclination(number, slon, slona, slonov)
+  def inclination(number, one, few, many)
+    return "" if number.nil? || number == 0
     remainder_100 = number % 100
-    return "#{number} #{slonov}" if remainder_100.between?(11, 14)
+    return many if remainder_100.between?(11, 14)
     remainder = number % 10
-    return "#{number} #{slon}" if remainder == 1
-    return "#{number} #{slona}" if remainder.between?(2, 4)
-    "#{number} #{slonov}" if remainder.between?(5, 9)
+    return one if remainder == 1
+    return few if remainder.between?(2, 4)
+    return many
   end
 
   def fa_icon(icon_class)

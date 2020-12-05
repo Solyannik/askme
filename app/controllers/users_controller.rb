@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
   before_action :load_user, except: [:index, :create, :new]
-  before_action :authorize_user, except: [:index, :create, :new, :show]
+  before_action :authorize_user, except: [:index,  :new, :create, :show]
 
   def index
     @users = User.all
@@ -36,8 +36,9 @@ class UsersController < ApplicationController
   def show
     @questions = @user.questions.order(created_at: :desc)
     @new_question = @user.questions.build
-    @questions_with_answer = @questions.count { |question| question.answer }
-    @questions_without_answer = @questions.count - @questions_with_answer
+    @number_of_questions = @questions.count
+    @questions_with_answer = @questions.where.not(answer: nil).count
+    @questions_without_answer = @number_of_questions - @questions_with_answer
   end
 
   private
