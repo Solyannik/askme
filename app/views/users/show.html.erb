@@ -18,6 +18,13 @@
   <div class="user-ask-button container text-center">
     <%= link_to "Спроси меня", '', class: 'button button-light', id: 'ask-button' %>
   </div>
+
+  <div class="counter">
+    <h2>вопросы</h2>
+    <p>всего <%= inclination(@number_of_questions, 'вопрос', 'вопроса', 'вопросов') %></p>
+    <p>с ответом <%= inclination(@questions_with_answer, 'вопрос', 'вопроса', 'вопросов') if @questions.any?%></p>
+    <p>без ответа <%= inclination(@questions_without_answer, 'вопрос', 'вопроса', 'вопросов') if @questions.any?%></p>
+  </div>
 </div>
 
 <div class="counter">
