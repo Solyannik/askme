@@ -1,4 +1,4 @@
-<div class="user-header text-center">
+<div class="user-header text-center" style="background: <%= @user.profile_color %>">
   <h1 class="title-medium">
     <%= @user.name %>
   </h1>
@@ -22,8 +22,8 @@
   <div class="counter">
     <h2>вопросы</h2>
     <p>всего <%= inclination(@number_of_questions, 'вопрос', 'вопроса', 'вопросов') %></p>
-    <p>с ответом <%= inclination(@questions_with_answer, 'вопрос', 'вопроса', 'вопросов') if @questions.any?%></p>
-    <p>без ответа <%= inclination(@questions_without_answer, 'вопрос', 'вопроса', 'вопросов') if @questions.any?%></p>
+    <p>с ответом <%= inclination(@questions_with_answer, 'вопрос', 'вопроса', 'вопросов') %></p>
+    <p>без ответа <%= inclination(@questions_without_answer, 'вопрос', 'вопроса', 'вопросов') %></p>
   </div>
 </div>
 

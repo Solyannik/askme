@@ -6,7 +6,7 @@ class User < ApplicationRecord
   VALID_USERNAME_REGEXP = /\A\w+\z/
 
   attr_accessor :password
-  
+
   has_many :questions
   before_validation :username_downcase, :email_downcase
   before_save :encrypt_password
@@ -20,6 +20,7 @@ class User < ApplicationRecord
             format: { with: VALID_USERNAME_REGEXP }
   validates :password, presence: true, confirmation: true, on: :create
   validates :avatar_url, format: { with: URI.regexp }, allow_blank: true
+  validates :profile_color, format: { with: /\A#([a-f\d]{3}){1,2}\z/i }
 
   def self.hash_to_string(password_hash)
     password_hash.unpack('H*')[0]
