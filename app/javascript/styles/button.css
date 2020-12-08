@@ -33,3 +33,7 @@
 .button-delete {
     background: #f70707;
 }
+
+.button-delete a {
+    color:#D9E6E5;
+}

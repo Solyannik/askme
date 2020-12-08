@@ -52,7 +52,7 @@
       </div>
 
       <div class="form-action buffer-top">
-        <div class="button button-dark  button-delete">
+        <div class="button button-delete">
           <%= link_to 'Удалить профиль', @user, method: :delete,
                       data: { confirm: "Подтвержаете удаление?" } if current_user == @user %>
         </div>
