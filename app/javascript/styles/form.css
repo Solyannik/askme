@@ -36,12 +36,12 @@
 }
 
 .form-color {
-  height: 3em;
+  height: 2.25em;
   width: 100%;
   max-width: 100%;
   box-sizing: border-box;
   border: 1px solid #00b6ad;
-  padding: 10px 10px;
-  border-radius: 1px;
+  padding: 7.5px 10px;
+  border-radius: 3px;
   font-size: 16px;
 }

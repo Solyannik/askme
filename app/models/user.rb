@@ -4,6 +4,7 @@ class User < ApplicationRecord
   ITERATIONS = 20000
   DIGEST = OpenSSL::Digest::SHA256.new
   VALID_USERNAME_REGEXP = /\A\w+\z/
+  COLOR_REGEXP = /\A\#[[:xdigit:]]{6}\z/
 
   attr_accessor :password
 
@@ -20,7 +21,9 @@ class User < ApplicationRecord
             format: { with: VALID_USERNAME_REGEXP }
   validates :password, presence: true, confirmation: true, on: :create
   validates :avatar_url, format: { with: URI.regexp }, allow_blank: true
-  validates :profile_color, format: { with: /\A#([a-f\d]{3}){1,2}\z/i }
+  validates :profile_color, format: { with: COLOR_REGEXP }
+
+  scope :sorted, -> { order(created_at: :desc) }
 
   def self.hash_to_string(password_hash)
     password_hash.unpack('H*')[0]
