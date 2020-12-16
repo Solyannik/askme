@@ -9,6 +9,7 @@ gem 'puma', '~> 4.1'
 gem 'webpacker', '~> 4.0'
 gem 'bootsnap', '>= 1.5.1', require: false
 gem 'sass-rails', require: false
+gem 'rails-i18n'
 
 group :production do
   gem 'pg'
