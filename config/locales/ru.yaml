@@ -3,4 +3,5 @@ ru:
     attributes:
       user:
         profile_color: Цвет фона профиля
-        
+          name: Ваше имя
+            avatar_url: Url вашей аватарки
