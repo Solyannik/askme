@@ -5,6 +5,7 @@ class Question < ApplicationRecord
   belongs_to :author, class_name: 'User', optional: true
 
   validates :text, presence: true, length: { maximum: 255 }
+  validates :text, presence: true, uniqueness: true
 
   after_save_commit :create_hashtags
 
