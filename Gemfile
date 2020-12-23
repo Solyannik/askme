@@ -26,7 +26,3 @@ group :development do
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '~> 3.2'
 end
-
-group :production do
-  gem 'pg'
-end
