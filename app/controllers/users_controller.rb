@@ -4,7 +4,7 @@ class UsersController < ApplicationController
 
   def index
     @users = User.sorted
-    @hashtags = Hashtag.all.distinct.order(:name)
+    @hashtags = Hashtag.order(:text)
   end
 
   def new
