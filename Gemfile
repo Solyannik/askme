@@ -10,6 +10,7 @@ gem 'webpacker', '~> 4.0'
 gem 'bootsnap', '>= 1.5.1', require: false
 gem 'sass-rails', require: false
 gem 'rails-i18n'
+gem 'uglifier', '>=1.3.0'
 
 group :production do
   gem 'pg'
@@ -24,4 +25,8 @@ end
 group :development do
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '~> 3.2'
+end
+
+group :production do
+  gem 'pg'
 end
