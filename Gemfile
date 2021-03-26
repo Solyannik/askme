@@ -10,6 +10,7 @@ gem 'webpacker', '~> 4.0'
 gem 'bootsnap', '>= 1.5.1', require: false
 gem 'sass-rails', require: false
 gem 'rails-i18n'
+gem 'recaptcha', require: 'recaptcha/rails'
 gem 'uglifier', '>=1.3.0'
 
 group :production do
