@@ -1,24 +1,41 @@
-# README
+# ASKME
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Description
 
-Things you may want to cover:
+This is a social networking app developed for learning purposes. You can create an account and ask and answer your friends' questions. Anonimous questions are also possible.
 
-* Ruby version
+Requirements
 
-* System dependencies
+    Ruby 2.7.0 Rails 6.0.3.4
 
-* Configuration
+Database:
 
-* Database creation
+    development: SQLite3 production: PostgreSQL
 
-* Database initialization
+App language: Russian
 
-* How to run the test suite
+Launching steps:
 
-* Services (job queues, cache servers, search engines, etc.)
+1: Download or clone this repository
 
-* Deployment instructions
+2: Use bundler
 
-* ...
+$ bundle install
+
+3: Create DataBase
+
+$ bundle exec rails db:create
+
+4: Run DataBase migrations
+
+$ bundle exec rails db:migrate
+
+5: To start Rails service, enter in command line
+
+$ rails s
+
+Deploy
+
+This App is set up to work on Heroku servers in production.
+
+link https://askolya.herokuapp.com/
